@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="IMG-20240929-WA0004.webp">
+    <title>Rapha Health Foundation</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            animation: fadeIn 1s ease-in;
+            color: black;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            position: relative;
+            width: 100%;
+            color: pink;
+            padding: 10px 20px;
+            z-index: 10;
+            background-color: pink;
+        }
+
+        h1 {
+            color: white;
+        }
+
+        .hero {
+            background-image: url('b06c4a1e-0948-480d-89cf-78066867b6c4.jpeg');
+            background-size: cover;
+            height: 120vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
+            color: #2c3e50;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .cta-button {
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #0056b3;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        section {
+            padding: 20px;
+            animation: slideIn 1s ease-in-out;
+            margin: 20px 0;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            flex: 1;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #f4f4f4;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            transform: translateX(-100%);
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            z-index: 20;
+        }
+
+        .sidebar.active {
+            transform: translateX(0);
+        }
+
+        .sidebar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .toggle-btn {
+            cursor: pointer;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .toggle-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .search-bar {
+            margin: 15px 0;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .services,
+        .values {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .project-container,
+        .value-item {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 10px;
+            flex: 1 1 300px;
+            max-width: 30%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .tooltip {
+            visibility: hidden;
+            width: 120px;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -60px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .value-item:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .follow-us {
+            text-align: center;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        .social-icons img {
+            width: 40px;
+            margin: 0 10px;
+        }
+
+        footer {
+            padding: 20px;
+            text-align: center;
+            background-color: #2c3e50;
+            color: white;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 15px;
+        }
+
+        a {
+            color: black;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: aqua;
+            transition: 0.3s;
+        }
+
+        .register-button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .register-button:hover {
+            background-color: #218838;
+        }
+
+        .sidebar a {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+
+        .sidebar a img {
+            width: 20px; /* Adjust icon size */
+            margin-right: 10px; /* Space between icon and text */
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1 style="color: #2c3e50;"><strong>Rapha Health Foundation</strong></h1>
+        <nav>
+            <ul>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#branches">Our Branches</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><button class="toggle-btn" id="toggle-sidebar">☰</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3>Explore Rapha here</h3>
+            <button class="toggle-btn" id="close-sidebar">✖</button>
+        </div>
+        <p>Hello there and welcome to Rapha Health Foundation, Would you like to explore our pages?</p>
+        
+        <div class="search-bar">
+            <input type="text" placeholder="Search...">
+        </div>
+
+        <p><a href="register.html"><img src="https://cdn-icons-png.freepik.com/256/16294/16294905.png?ga=GA1.1.2123510814.1726852473&semt=ais_hybrid" alt="Register Icon"> Register here!</a></p>
+        <p><a href="creators.html"><img src="https://cdn-icons-png.freepik.com/256/2849/2849170.png?ga=GA1.1.2123510814.1726852473&semt=ais_hybrid" alt="Services Icon"> What our creators say</a></p>
+        <p><a href="associations.html"><img src="https://cdn-icons-png.freepik.com/256/12100/12100135.png?ga=GA1.1.2123510814.1726852473&semt=ais_hybrid" alt="https://cdn-icons-png.freepik.com/256/13003/13003912.png?ga=GA1.1.2123510814.1726852473&semt=ais_"> Associations</a></p>
+        <p><a href=""><img src="https://cdn-icons-png.freepik.com/256/2184/2184357.png?ga=GA1.1.2123510814.1726852473&semt=ais_hybrid" alt="Branches Icon"> Find Our Branches</a></p>
+    </div>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Your Health, Our Mission</h2>
+            <p>Expert health advice for a better life.</p>
+            <a href="Health practice.html" class="cta-button">Learn More</a>
+        </div>
+    </section>
+
+    <section>
+        <h2>Welcome to <strong style="color: plum; font-size: 30px;">Rapha Health Foundation</strong></h2>
+        <p>Founded by Mrs. Adowa Sarpong, a nurse dedicated to extending healthcare services to underserved communities, we provide essential health services, including disease management and regular checkups for nearby villages. Our main branch is located in Abuakwa, and we operate various branches across Ghana.</p>
+        <img src="data=6iXW4wBL7VAEAOPyHgwquTUF3Rr56b3c4t3YO0TYVH6F9_QlQFhZWOuwTv6yBkNU4BTHUPiJObXOtgbzUkagbGQp49oF1sWAI2G9KZQ3TE_w8IRHe60NXuudbiFp2Np-vKxEKbH2OX2erGTTUxzSmfDLAYZ7Hevb0Un189sV7P7BgN58EiWZG1Z0RThXG0KBhXr5L1H_2g0HX.png" alt="Town" width="700" style="display: block; margin: 0 auto; border-radius: 8px;">
+        <p>Visit our main location in Atwima-Mim, where you can find more about our services.</p>
+        <hr style="background-color: #2c3e50;">
+    </section>
+
+    <section id="services" class="services">
+        <h2>Our Services</h2>
+        <div class="project-container">
+            <h3>The SafeSound Project</h3>
+            <p>Aims to reduce Noise-Induced Hearing Loss (NIHL) through education and free protective devices.</p>
+        </div>
+        <div class="project-container">
+            <h3>ENT Wellness Check</h3>
+            <p>Free screenings and medications for ear, nose, and throat health issues in vulnerable groups.</p>
+        </div>
+        <div class="project-container">
+            <h3>The HealthyChoice Initiative</h3>
+            <p>Promotes wellness through education on nutrition, exercise, and mental well-being.</p>
+        </div>
+    </section>
+
+    <section id="branches" class="branches">
+        <h2>Our Branches in Ghana</h2>
+        <p>We have established several branches across Ghana to better serve our communities:</p>
+        <ul>
+            <li><strong>Accra Branch:</strong> Focused on urban health initiatives and community outreach.</li>
+            <li><strong>Kumasi Branch:</strong> Specializes in maternal and child health programs.</li>
+            <li><strong>Tamale Branch:</strong> Offers health education and preventive services in northern regions.</li>
+            <li><strong>Takoradi Branch:</strong> Addresses health issues specific to coastal communities.</li>
+        </ul>
+    </section>
+
+    <section id="about" class="about">
+        <h2>About Us</h2>
+        <p>Dedicated to improving health outcomes for underserved communities.</p>
+        <h3>Vision</h3>
+        <p>A world with accessible health information for all.</p>
+        <h3>Mission</h3>
+        <p>Empowering individuals to take charge of their health.</p>
+        <h3>Values</h3>
+        <p>Compassion, integrity, and excellence in all we do.</p>
+    </section>
+
+    <section class="values">
+        <h2>What We Value</h2>
+        <div class="values-container" style="display: flex; flex-wrap: wrap; justify-content: space-around;">
+            <div class="value-item">
+                <img src="https://cdn-icons-png.freepik.com/256/1062/1062561.png" alt="Compassion Icon" style="width: 50px;">
+                <h3>Compassion</h3>
+                <p>We empathize with the needs of others.</p>
+                <span class="tooltip">Compassion<br><span style="color: plum;">Color: Plum</span></span>
+            </div>
+            <div class="value-item">
+                <img src="https://cdn-icons-png.freepik.com/256/15181/15181912.png" alt="Integrity Icon" style="width: 50px;">
+                <h3>Integrity</h3>
+                <p>We uphold honesty and transparency.</p>
+                <span class="tooltip">Integrity<br><span style="color: green;">Color: Green</span></span>
+            </div>
+            <div class="value-item">
+                <img src="https://cdn-icons-png.freepik.com/256/9358/9358861.png" alt="Excellence Icon" style="width: 50px;">
+                <h3>Excellence</h3>
+                <p>Committed to high-quality services.</p>
+                <span class="tooltip">Excellence<br><span style="color: gold;">Color: Gold</span></span>
+            </div>
+            <div class="value-item">
+                <img src="https://cdn-icons-png.freepik.com/256/2622/2622199.png" alt="Community Icon" style="width: 50px;">
+                <h3>Community</h3>
+                <p>Building strong relationships to support our community.</p>
+                <span class="tooltip">Community<br><span style="color: blue;">Color: Blue</span></span>
+            </div>
+        </div>
+    </section>
+
+    <div class="type-container" style="background-color: #2c3e50; border-radius: 8px; padding: 20px;">
+        <h1 style="color: white;">What We Do</h1>
+        <p style="color: white;">We provide health services to address disorders and infections, focusing on rural and underserved areas, ensuring comprehensive treatment for various diseases.</p>
+        <div style="display: flex; justify-content: center; gap: 20px;">
+            <img src="158a98fb-5647-4d80-9222-0113682955ee.jpeg" alt="Helping" width="350" style="border-radius: 8px; flex: 1;">
+            <img src="2330d4f2-c2b9-4bb1-a0b0-26046a1ccaeb.jpeg" alt="Helping" width="350" style="border-radius: 8px; flex: 1;">
+        </div>
+    </div>
+
+    <div class="follow-us">
+        <h2>Follow Us!</h2>
+        <div class="social-icons">
+            <a href="https://www.tiktok.com" target="_blank" title="Follow us on TikTok">
+                <img src="download.png" alt="TikTok Logo">
+            </a>
+            <a href="https://www.facebook.com" target="_blank" title="Follow us on Facebook">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Facebook_f_logo_%282019%29.svg/1024px-Facebook_f_logo_%282019%29.svg.png" alt="Facebook Logo">
+            </a>
+            <a href="https://www.whatsapp.com" target="_blank" title="Contact us on WhatsApp">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/1024px-WhatsApp.svg.png" alt="WhatsApp Logo">
+            </a>
+        </div>
+    </div>
+
+    <footer id="contact">
+        <h2>Contact Us</h2>
+        <p>Email: <a href="mailto:info@raphahealthfoundation.org" style="color: white;">info@raphahealthfoundation.org</a></p>
+        <p>Phone: <a href="tel:0240778653" style="color: white;">0240778653</a></p>
+        <p>Follow us for updates and health tips!</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                document.querySelector(targetId).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        const sidebar = document.getElementById('sidebar');
+        const toggleButton = document.getElementById('toggle-sidebar');
+        const closeButton = document.getElementById('close-sidebar');
+
+        toggleButton.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+        });
+
+        closeButton.addEventListener('click', () => {
+            sidebar.classList.remove('active');
+        });
+    </script>
+</body>
+
+</html>
